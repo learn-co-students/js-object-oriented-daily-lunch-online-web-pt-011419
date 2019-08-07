@@ -19,6 +19,11 @@ class Neighborhood{
     customers(){
         return store.customers.filter(customer => customer.neighborhoodId === this.id)
     }
+
+    // Here
+    meals(){
+
+    }
 }
 
 class Customer{
@@ -30,7 +35,15 @@ class Customer{
     }
     
     deliveries(){
-        
+        return store.deliveries.filter(delivery => delivery.customerId === this.id)
+    }
+
+    meals(){
+        return this.deliveries().map(delivery => delivery.meal())
+    }
+
+    totalSpent(){
+        return this.meals().reduce((total, meal) => (total += meal.price), 0);
     }
 }
 
@@ -47,7 +60,11 @@ class Meal{
     }
 
     customers(){
+        return this.deliveries().map(delivery => delivery.customer())
+    }
 
+    static byPrice() {
+        return store.meals.slice().sort((meal1, meal2) => meal2.price - meal1.price)
     }
 }
 
@@ -101,4 +118,4 @@ let meal;
       secondDelivery = new Delivery(secondMeal.id, secondNeighborhood.id, secondCustomer.id);
       thirdDelivery = new Delivery(secondMeal.id, secondNeighborhood.id, secondCustomer.id);
 
-neighborhood.deliveries()
+meal.byPrice()
