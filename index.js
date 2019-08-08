@@ -22,7 +22,11 @@ class Neighborhood{
 
     // Here
     meals(){
-
+        // return this.deliveries().map(delivery => delivery.customer())
+        //this.deliveries().map(delivery => delivery.neighborhood())
+        let mealArray = []
+        this.deliveries().map(delivery => {if (delivery.neighborhoodID === this.id){ mealArray.push(delivery.meal())} return mealArray0})
+        debugger;
     }
 }
 
@@ -98,7 +102,7 @@ class Delivery{
 
 
 // For Testing
-let meal;
+    let meal;
     let secondMeal;
     let customer;
     let secondCustomer;
@@ -118,4 +122,4 @@ let meal;
       secondDelivery = new Delivery(secondMeal.id, secondNeighborhood.id, secondCustomer.id);
       thirdDelivery = new Delivery(secondMeal.id, secondNeighborhood.id, secondCustomer.id);
 
-meal.byPrice()
+secondNeighborhood.meals()
