@@ -25,7 +25,7 @@ class Neighborhood{
         // return this.deliveries().map(delivery => delivery.customer())
         //this.deliveries().map(delivery => delivery.neighborhood())
         let mealArray = []
-        this.deliveries().map(delivery => {if (delivery.neighborhoodID === this.id){ mealArray.push(delivery.meal())} return mealArray0})
+        this.deliveries().map(delivery => {if (delivery.neighborhoodID === this.id){ mealArray.push(delivery.meal())} return mealArray})
         debugger;
     }
 }
