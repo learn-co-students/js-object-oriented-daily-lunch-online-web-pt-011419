@@ -20,13 +20,12 @@ class Neighborhood{
         return store.customers.filter(customer => customer.neighborhoodId === this.id)
     }
 
-    // Here
-    meals(){
-        // return this.deliveries().map(delivery => delivery.customer())
-        //this.deliveries().map(delivery => delivery.neighborhood())
-        let mealArray = []
-        this.deliveries().map(delivery => {if (delivery.neighborhoodID === this.id){ mealArray.push(delivery.meal())} return mealArray})
-        debugger;
+    meals() { 
+        let mealArray = this.deliveries().map(delivery => delivery.meal())
+
+        return [...new Set(mealArray)]
+        // new Set(myArray) creates a Unique set of elements.
+        // [...] creates a new array of those contents.
     }
 }
 
